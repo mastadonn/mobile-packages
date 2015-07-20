@@ -58,8 +58,8 @@ Template.viewfinder.rendered = function() {
   }, success, failure);
 
   // resize viewfinder to a reasonable size, not necessarily photo size
-  var viewfinderWidth = 320;
-  var viewfinderHeight = 240;
+  var viewfinderWidth = 350;
+  var viewfinderHeight = 350;
   var resized = false;
   video.addEventListener('canplay', function() {
     if (! resized) {
@@ -163,17 +163,6 @@ MeteorCamera.getPicture = function (options, callback) {
 
   // Canvas#toDataURL takes the quality as a 0-1 value, not a percentage
   quality = (options.quality || 49) / 100;
-
-  if (desiredHeight * 4 / 3 > desiredWidth) {
-    canvasWidth = desiredHeight * 4 / 3;
-    canvasHeight = desiredHeight;
-  } else {
-    canvasHeight = desiredWidth * 3 / 4;
-    canvasWidth = desiredWidth;
-  }
-
-  canvasWidth = Math.round(canvasWidth);
-  canvasHeight = Math.round(canvasHeight);
 
   var view;
   
